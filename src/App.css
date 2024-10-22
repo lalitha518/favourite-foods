@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  width: 100%;
+  background-color: #071A28;
+  color: white;
+  padding: 10px;
+}
+
+.logo {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.nav-items {
+  padding: 0px 10px;
+}
+
+.nav-items > ul {
+  font-size: 18px;
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-items > ul > li {
+  margin: 0 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-items > ul > li:hover {
+  background-color: #1a1a1a;
+}
+
+.body {
+  padding: 20px 0;
+}
+
+.search {
+  padding: 10px;
+  font-size: 20px;
+}
+
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.res-card {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 180px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 5px; /* Reduced margin for closer spacing */
+  text-align: center;
+}
+
+.res-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.res-logo {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.res-card h3 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.res-card h4 {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.footer {
+  background-color: #071A28;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.res-card {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 15px;
+  margin: 10px;
+  text-align: center;
+}
+
+.res-logo {
+  width: 100%;
+  border-radius: 10px;
+  height: 120px; /* Adjust height as needed */
+}
+
+h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #555;
+}
