@@ -6,6 +6,7 @@ import "./App.css";
 
 const App = () => {
   const [listOfRes, setListOfRes] = useState([]);
+  const [originalList, setOriginalList] = useState([]); // To keep original list
 
   useEffect(() => {
     fetchData();
@@ -26,17 +27,22 @@ const App = () => {
     });
 
     setListOfRes(restaurantData);
+    setOriginalList(restaurantData); // Store original list for filtering
   };
 
   return (
     <div className="app">
-      <Header />
+      <Header
+        listOfRes={listOfRes}
+        setListOfRes={setListOfRes}
+        originalList={originalList}
+      />
       <div className="body">
         <div className="filter">
           <button
             className="filter-btn"
             onClick={() => {
-              const filterData = listOfRes.filter((res) => {
+              const filterData = originalList.filter((res) => {
                 return res.avgRating > 4.2;
               });
               setListOfRes(filterData);
@@ -48,10 +54,7 @@ const App = () => {
         </div>
         <div className="res-container">
           {listOfRes.map((restaurant) => (
-            <RestaurantCard
-              key={restaurant.id} 
-              restaurant={restaurant}
-            />
+            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
           ))}
         </div>
       </div>
