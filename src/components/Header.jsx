@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useAppContext } from "../myContext";
 import { LOGO_URL } from "../utils/constants";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
-const Header = ({ listOfRes, setListOfRes, originalList }) => {
+const Header = () => {
+  const { listOfRes, setListOfRes, originalList } = useAppContext();
   const [buttonName, setButtonName] = useState("Login");
   return (
     <div className="header">
@@ -18,10 +21,10 @@ const Header = ({ listOfRes, setListOfRes, originalList }) => {
               originalList={originalList}
             />
           </li>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
+          <li><Link to="/" className="nav-link">Home</Link> </li>
+          <li><Link to="/about" className="nav-link">About Us</Link> </li>
+          <li><Link to="/contact" className="nav-link">Contact Us</Link></li>
+          <li><Link to="/cart" className="nav-link">Cart</Link></li>
           <li
             className="login-btn"
             onClick={() => {

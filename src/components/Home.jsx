@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard"
-import Header from "./Header";
+import React, { useEffect } from "react";
+import RestaurantCard from "./RestaurantCard";
+import { useAppContext } from "../myContext";
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [listOfRes, setListOfRes] = useState([]);
-  const [originalList, setOriginalList] = useState([]); // To keep original list
+  const { listOfRes, setListOfRes, originalList, setOriginalList } =
+    useAppContext();
+  // const [listOfRes, setListOfRes] = useState([]);
+  // const [originalList, setOriginalList] = useState([]); // To keep original list
 
   useEffect(() => {
     fetchData();
@@ -18,7 +22,7 @@ const Home = () => {
     console.log(json);
 
     const restaurants =
-      json.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle
+      json.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || [];
     const restaurantData = restaurants.map((restaurant) => {
       return restaurant.info;
@@ -28,13 +32,10 @@ const Home = () => {
     setOriginalList(restaurantData); // Store original list for filtering
   };
 
-  return (
+  return listOfRes === null ? (
+    <Shimmer />
+  ) : (
     <div className="app">
-      <Header
-        listOfRes={listOfRes}
-        setListOfRes={setListOfRes}
-        originalList={originalList}
-      />
       <div className="body">
         <div className="filter">
           <button
@@ -52,7 +53,9 @@ const Home = () => {
         </div>
         <div className="res-container">
           {listOfRes.map((restaurant) => (
-            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+            <Link className="res-card-link" key={restaurant.id} to={`/restaurant/${restaurant.id}`}>
+            <RestaurantCard restaurant={restaurant} />
+          </Link>
           ))}
         </div>
       </div>

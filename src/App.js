@@ -2,36 +2,57 @@ import React from "react";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import About from "./components/About";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import "./App.css";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
+import Header from "./components/Header";
+import RestaurantMenu from "./components/RestaurantMenu";
+import Cart from "./components/Cart";
+const Layout = () => {
+  return (
+    <div className="app">
+      <Header/>
+      <Outlet />
+      <Footer />
 
-// Define the router with paths for Home and About
+    </div>
+  );
+};
+
+// Define the routes with Layout wrapping them
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div className="app">
-        <Home />
-        <Footer />
-      </div>
-    ),
-  },
-  {
-    path: "/about",
-    element: (
-      <div className="app">
-        <About />
-        <Footer />
-      </div>
-    ),
+    element: <Layout />,
+    errorElement: <Error/>,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
+      {
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu />,
+      },
+    ],
   },
 ]);
 
-// The main App component that renders the RouterProvider
 const App = () => {
-  return (
-    <RouterProvider router={appRouter} />
-  );
+  return <RouterProvider router={appRouter} />;
 };
 
 export default App;
