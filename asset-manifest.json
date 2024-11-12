@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/favourite-foods/static/css/main.48f4ce1e.css",
+    "main.js": "/favourite-foods/static/js/main.bf968849.js",
+    "static/js/453.18cd7ebe.chunk.js": "/favourite-foods/static/js/453.18cd7ebe.chunk.js",
+    "index.html": "/favourite-foods/index.html",
+    "main.48f4ce1e.css.map": "/favourite-foods/static/css/main.48f4ce1e.css.map",
+    "main.bf968849.js.map": "/favourite-foods/static/js/main.bf968849.js.map",
+    "453.18cd7ebe.chunk.js.map": "/favourite-foods/static/js/453.18cd7ebe.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.48f4ce1e.css",
+    "static/js/main.bf968849.js"
+  ]
+}
