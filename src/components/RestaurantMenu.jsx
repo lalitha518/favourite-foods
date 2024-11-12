@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { IMAGE_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
@@ -10,13 +10,8 @@ const RestaurantMenu = () => {
 
   console.log("Captured resId:", resId); // Check if resId is correct here
 
-  useEffect(() => {
-    if (resId) {
-      fetchMenu();
-    }
-  }, [resId]);
-
-  const fetchMenu = async () => {
+  // Using useCallback to memoize fetchMenu and prevent it from being re-created on every render
+  const fetchMenu = useCallback(async () => {
     try {
       const url = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.99740&lng=79.00110&restaurantId=${resId}`;
       const response = await fetch(url);
@@ -32,7 +27,13 @@ const RestaurantMenu = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [resId]); // Include resId as dependency
+
+  useEffect(() => {
+    if (resId) {
+      fetchMenu();
+    }
+  }, [resId, fetchMenu]); // Add fetchMenu to the dependency array
 
   // Ensure that itemCards is accessed correctly based on the structure of the data
   const itemCards =
